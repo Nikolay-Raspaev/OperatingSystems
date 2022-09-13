@@ -75,6 +75,7 @@ namespace Lab01
             {
                 throw new NullReferenceException("Стек пуст. Нет элементов для получения.");
             }
+
             return item;
         }
     }
