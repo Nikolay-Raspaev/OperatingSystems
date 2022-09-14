@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab01
 {
-    class Kernel
+    public class Kernel
     {
         public List<SysCall> listSysCall;
         public Kernel() {
             listSysCall = new List<SysCall>();
-            int a = 1;
             listSysCall.Add(new SysCall(1, "Принтер", new List<Arg> { new Arg("first", "Устройство вывода", 400)}));
             listSysCall.Add(new SysCall(2, "Экран", new List<Arg> { new Arg("first", "Устройство вывода", 401) }));
             listSysCall.Add(new SysCall(3, "Мышь", new List<Arg> { new Arg("first", "Устройство ввода", 402) }));
@@ -27,32 +26,26 @@ namespace Lab01
                 }
             }        
         }
-        public void Call(int id, MyStack<int> stack)
+        public void Call(int id, MyStack<Arg> stack)
         {
-            //Добавляем новые элементы в стек.
-            stack.Push(id);
-            //Получаем элементы с удалением.
-            var item1 = stack.Pop();
-            //Console.WriteLine($"Верхний элемент {item1}.");
-            //Console.ReadLine();
+            Arg arg = stack.Peek();
             int a = 0;
             foreach (SysCall element in listSysCall)
             {
-                if (element.ID == item1)
+                foreach (Arg ar in element.Args)
                 {
-                    Console.WriteLine(element.ID + " " + element.Name + " Правильный вызов");
-                    foreach (Arg ar in element.Args)
+                    if ((element.ID == id) && (ar.Name == arg.Name) && (ar.Type == arg.Type) && (ar.Value == arg.Value))
                     {
-                        Console.WriteLine("Arg: Name = " + ar.Name + " Type = " + ar.Type);
+                        Console.WriteLine("Arg: ID = " + id + ", Name = " + arg.Name + ", Type = " + arg.Type + ", Value = " + arg.Value);
                         Console.WriteLine();
+                        return;
                     }
-                    return;
-                }
-                else a++;
-                if (a == 5)
-                {
-                    Console.WriteLine("Ошибка");
-                }
+                    else a++;
+                    if (a == 5)
+                    {
+                        Console.WriteLine("Ошибка");
+                    }
+                }              
             }
         }
     }
