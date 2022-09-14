@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab01
 {
-    class SysCall
+    public class SysCall
     {
         public int ID;
         public string Name;

@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace Lab01
 {
-    class Kernel
+    public class Kernel
     {
         public List<SysCall> listSysCall;
+        public MyStack<SysCall> mystack;
         public Kernel() {
             listSysCall = new List<SysCall>();
-            int a = 1;
+            mystack = new MyStack<SysCall>();
+            mystack.Push(new SysCall(1, "Принтер", new List<Arg> { new Arg("first", "Устройство вывода", 400) }));
+            mystack.Push(new SysCall(2, "Экран", new List<Arg> { new Arg("first", "Устройство вывода", 401) }));
+            mystack.Push(new SysCall(3, "Мышь", new List<Arg> { new Arg("first", "Устройство ввода", 402) }));
+            mystack.Push(new SysCall(4, "Клавиатура", new List<Arg> { new Arg("first", "Устройство ввода", 403) }));
+            mystack.Push(new SysCall(5, "Что-то", new List<Arg> { new Arg("first", "Какой-то", 404) }));
             listSysCall.Add(new SysCall(1, "Принтер", new List<Arg> { new Arg("first", "Устройство вывода", 400)}));
             listSysCall.Add(new SysCall(2, "Экран", new List<Arg> { new Arg("first", "Устройство вывода", 401) }));
             listSysCall.Add(new SysCall(3, "Мышь", new List<Arg> { new Arg("first", "Устройство ввода", 402) }));
@@ -27,18 +33,18 @@ namespace Lab01
                 }
             }        
         }
-        public void Call(int id, MyStack<int> stack)
+        public void Call(int id)
         {
             //Добавляем новые элементы в стек.
-            stack.Push(id);
+            //stack.Push(id);
             //Получаем элементы с удалением.
-            var item1 = stack.Pop();
+            //var item1 = stack.Pop();
             //Console.WriteLine($"Верхний элемент {item1}.");
             //Console.ReadLine();
             int a = 0;
-            foreach (SysCall element in listSysCall)
+            foreach (SysCall element in mystack)
             {
-                if (element.ID == item1)
+                if (element.ID == id)
                 {
                     Console.WriteLine(element.ID + " " + element.Name + " Правильный вызов");
                     foreach (Arg ar in element.Args)
