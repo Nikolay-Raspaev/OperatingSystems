@@ -8,22 +8,10 @@ namespace Lab01
         {
             Kernel kernel = new Kernel();
             kernel.ShowAll();
-            // Создаем новый стек.
-            // Создаем новый стек.
-            //var stack = new MyStack<int>();
-            //kernel.Call(1, stack);
-            //kernel.Call(2, stack);
-            //kernel.Call(3, stack);
-            //kernel.Call(4, stack);
-            //kernel.Call(5, stack);
-            //kernel.Call(6, stack);
-            kernel.Call(1);
-            kernel.Call(2);
-            kernel.Call(3);
-            kernel.Call(4);
-            kernel.Call(5);
-            kernel.Call(6);
-
+            MyStack<Arg> mystack = new MyStack<Arg>();
+            mystack.Push(new Arg("first", "Устройство вывода", 400));
+            kernel.Call(1, mystack);
+            kernel.Call(3, mystack);
             Console.ReadLine();
         }
     }
