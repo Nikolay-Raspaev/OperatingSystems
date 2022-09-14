@@ -27,10 +27,8 @@ namespace Lab01
                 }
             }        
         }
-        public void Call(int id)
+        public void Call(int id, MyStack<int> stack)
         {
-            var stack = new Stack<int>();
-
             //Добавляем новые элементы в стек.
             stack.Push(id);
             //Получаем элементы с удалением.
