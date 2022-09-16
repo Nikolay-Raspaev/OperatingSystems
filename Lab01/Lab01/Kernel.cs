@@ -28,7 +28,7 @@ namespace Lab01
         }
         public void Call(int id, MyStack<Arg> stack)
         {
-            Arg arg = stack.Peek();
+            Arg arg = stack.Pop();
             int a = 0;
             foreach (SysCall element in listSysCall)
             {
