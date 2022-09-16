@@ -36,6 +36,21 @@ namespace Lab01
                 {
                     if ((element.ID == id) && (ar.Name == arg.Name) && (ar.Type == arg.Type) && (ar.Value == arg.Value))
                     {
+                        Console.WriteLine("Правильный системный вызов");
+                        Console.WriteLine("Arg: ID = " + id + ", Name = " + arg.Name + ", Type = " + arg.Type + ", Value = " + arg.Value);
+                        Console.WriteLine();
+                        return;
+                    }
+                    if ((element.ID != id) && (ar.Name == arg.Name) && (ar.Type == arg.Type) && (ar.Value == arg.Value))
+                    {
+                        Console.WriteLine("Ошибка в ID");
+                        Console.WriteLine("Arg: ID = " + id + ", Name = " + arg.Name + ", Type = " + arg.Type + ", Value = " + arg.Value);
+                        Console.WriteLine();
+                        return;
+                    }
+                    if ((element.ID == id) && ((ar.Name != arg.Name) || (ar.Type != arg.Type) || (ar.Value != arg.Value)))
+                    {
+                        Console.WriteLine("Ошибка в аргументах");
                         Console.WriteLine("Arg: ID = " + id + ", Name = " + arg.Name + ", Type = " + arg.Type + ", Value = " + arg.Value);
                         Console.WriteLine();
                         return;
