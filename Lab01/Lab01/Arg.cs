@@ -17,5 +17,10 @@ namespace Lab01
             Type = type;
             Value = value;
         }
+        public Arg(string name, string type)
+        {
+            Name = name;
+            Type = type;
+        }
     }
 }
